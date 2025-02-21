@@ -19,7 +19,7 @@ For more information and reference materials, you can access the course material
 To get started with the project, clone the repository and you can use each algorithm's function from the drawing.h file in the main file.
 
 ```bash
-git clone https://github.com/yourusername/Computer_Graphics_course.git
+git clone https://github.com/mohanad-80/Computer_Graphics_course.git
 cd Computer_Graphics_course
 ```
 
