@@ -10,6 +10,22 @@
 namespace Drawing
 {
   /**
+   * @brief Swaps two integers
+   *
+   * @param a first int
+   * @param b second int
+   */
+  void swap(int &a, int &b);
+
+  /**
+   * @brief Rounds double to integer
+   *
+   * @param n number to round
+   * @return rounded number
+   */
+  int round(double n);
+
+  /**
    * @brief Represents the rgb values of a color
    *
    */

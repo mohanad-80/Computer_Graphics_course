@@ -53,8 +53,7 @@ int main(void)
       Drawing::SetPixel(i, i, {1.0f, 0.0f, 0.0f});
     }
 
-    Drawing::SetPixel(200, 150, {0.0f, 1.0f, 0.0f});
-    Drawing::SetPixel(300, 200, {1.0f, 1.0f, 1.0f});
+    Drawing::DrawLine(200, 150, 300, 200, {1.0f, 1.0f, 1.0f});
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
