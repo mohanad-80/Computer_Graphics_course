@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: g++.exe build active file",
+      "command": "C:/msys64/mingw64/bin/g++.exe",
+      "args": [
+        "-g",
+        "-std=c++17",
+        "-I${workspaceFolder}/include",
+        "-L${workspaceFolder}/lib",
+        "${workspaceFolder}/src/main.cpp",
+        "${workspaceFolder}/src/drawing.cpp",
+        "${workspaceFolder}/src/glad.c",
+        "-lglfw3dll",
+        "-lopengl32",
+        "-o",
+        "${workspaceFolder}/build/main.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build"
+      },
+      "detail": "compiler: C:/msys64/mingw64/bin/g++.exe"
+    },
+    {
+      "label": "Build and Run",
+      "dependsOn": ["C/C++: g++.exe build active file"],
+      "type": "shell",
+      "command": "${workspaceFolder}/build/main.exe",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "cmd.exe", // Or "powershell.exe"
+          "args": ["/c"] //  Important for cmd.exe
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

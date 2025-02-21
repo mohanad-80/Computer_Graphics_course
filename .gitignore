@@ -1,0 +1,17 @@
+# Ignore build artifacts
+/build/
+/lib/*.a
+/lib/*.dll
+
+# Ignore compiled object files
+*.o
+*.obj
+
+# Ignore executable files
+*.exe
+
+# Ignore temporary files
+*.tmp
+*.log
+
+*.dll
