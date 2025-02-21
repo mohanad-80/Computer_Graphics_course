@@ -34,7 +34,8 @@ int main(void)
     return -1;
   }
 
-  std::cout << glGetString(GL_VERSION) << '\n';
+  std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+  std::cout << "GPU: " << glGetString(GL_RENDERER) << std::endl;
 
   // 🟢 Set up an orthographic projection to use (x, y) as pixel coordinates
   glMatrixMode(GL_PROJECTION);
@@ -60,12 +61,12 @@ int main(void)
     // }
 
     // Slope < 1 (shallow)
-    Drawing::DrawLine(150, 100, 250, 150, red);    // Naïve Algorithm
+    Drawing::DrawLine(150, 100, 250, 150, red);  // Naïve Algorithm
     Drawing::DrawLine2(160, 100, 260, 150, red); // Improved Algorithm
     Drawing::SimpleDDA(170, 100, 270, 150, red); // SimpleDDA Algorithm
-    
+
     // Slope > 1 (steep)
-    Drawing::DrawLine(100, 50, 150, 250, blue);    // Naïve Algorithm
+    Drawing::DrawLine(100, 50, 150, 250, blue);  // Naïve Algorithm
     Drawing::DrawLine2(110, 50, 160, 250, blue); // Improved Algorithm
     Drawing::SimpleDDA(120, 50, 170, 250, blue); // SimpleDDA Algorithm
 
