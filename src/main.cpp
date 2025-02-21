@@ -39,29 +39,12 @@ int main(void)
   glOrtho(0, 640, 0, 480, -1, 1); // Match the window size (640x480)
   glMatrixMode(GL_MODELVIEW);
 
-  // float positions[6] = {
-  //     -0.5f, -0.5f,
-  //     0.0f, 0.5f,
-  //     0.5f, -0.5f};
-
-  // GLuint VBO;
-  // glGenBuffers(1, &VBO);
-  // glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  // glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
-
   /* Loop until the user closes the window */
   while (!glfwWindowShouldClose(window))
   {
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // glBegin(GL_TRIANGLES);
-    // glVertex2f(-0.5f, -0.5f);
-    // glVertex2f(0.0f, 0.5f);
-    // glVertex2f(0.5f, -0.5f);
-    // glEnd();
-
-    // 🔴 Flip y-coordinates to match top-left origin (OpenGL uses bottom-left)
     for (size_t i = 100; i <= 200; i++)
     {
       SetPixel(i, i, 1.0f, 0.0f, 0.0f); // Red pixel
