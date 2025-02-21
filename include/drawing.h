@@ -68,6 +68,21 @@ namespace Drawing
    * @param color rgb values of the color to use
    */
   void DrawLine2(int x1, int y1, int x2, int y2, COLORREF color);
+
+  /**
+   * @brief Draw a line using simple digital differential
+   * analyzer (DDA) method.
+   *
+   * @details This implementation is better than the naive one, because
+   * it gets rid of float multiplication which makes it faster.
+   *
+   * @param x1    x coordinate of the first point
+   * @param y1    y coordinate of the first point
+   * @param x2    x coordinate of the second point
+   * @param y2    y coordinate of the second point
+   * @param color rgb values of the color to use
+   */
+  void SimpleDDA(int x1, int y1, int x2, int y2, COLORREF color);
 } // namespace Drawing
 
 #endif

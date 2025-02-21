@@ -61,11 +61,13 @@ int main(void)
 
     // Slope < 1 (shallow)
     Drawing::DrawLine(150, 100, 250, 150, red);    // Naïve Algorithm
-    Drawing::DrawLine2(160, 100, 260, 150, green); // Improved Algorithm
-
+    Drawing::DrawLine2(160, 100, 260, 150, red); // Improved Algorithm
+    Drawing::SimpleDDA(170, 100, 270, 150, red); // SimpleDDA Algorithm
+    
     // Slope > 1 (steep)
     Drawing::DrawLine(100, 50, 150, 250, blue);    // Naïve Algorithm
-    Drawing::DrawLine2(110, 50, 160, 250, yellow); // Improved Algorithm
+    Drawing::DrawLine2(110, 50, 160, 250, blue); // Improved Algorithm
+    Drawing::SimpleDDA(120, 50, 170, 250, blue); // SimpleDDA Algorithm
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

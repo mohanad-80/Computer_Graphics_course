@@ -86,4 +86,52 @@ namespace Drawing
       }
     }
   }
+
+  void SimpleDDA(int x1, int y1, int x2, int y2, COLORREF color)
+  {
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+    if (std::abs(dy) <= std::abs(dx))
+    {
+      if (dx == 0)
+      {
+        SetPixel(x1, y1, color);
+        return;
+      }
+
+      double m = (double)dy / dx;
+      if (x1 > x2)
+      {
+        swap(x1, x2);
+        swap(y1, y2);
+      }
+
+      int x = x1;
+      double y = y1;
+      while (x <= x2)
+      {
+        SetPixel(x, round(y), color);
+        x++;
+        y += m;
+      }
+    }
+    else
+    {
+      double mi = (double)dx / dy;
+      if (y1 > y2)
+      {
+        swap(x1, x2);
+        swap(y1, y2);
+      }
+
+      double x = x1;
+      int y = y1;
+      while (y <= y2)
+      {
+        SetPixel(round(x), y, color);
+        y++;
+        x += mi;
+      }
+    }
+  }
 } // namespace Drawing
