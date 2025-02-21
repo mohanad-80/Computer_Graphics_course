@@ -48,12 +48,24 @@ int main(void)
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
 
-    for (size_t i = 100; i <= 200; i++)
-    {
-      Drawing::SetPixel(i, i, {1.0f, 0.0f, 0.0f});
-    }
+    Drawing::COLORREF red(1.0f, 0.0f, 0.0f);
+    Drawing::COLORREF green(0.0f, 1.0f, 0.0f);
+    Drawing::COLORREF blue(0.0f, 0.0f, 1.0f);
+    Drawing::COLORREF yellow(1.0f, 1.0f, 0.0f);
 
-    Drawing::DrawLine(200, 150, 300, 200, {1.0f, 1.0f, 1.0f});
+    // test SetPixel
+    // for (size_t i = 100; i <= 200; i++)
+    // {
+    //   Drawing::SetPixel(i, i, {1.0f, 0.0f, 0.0f});
+    // }
+
+    // Slope < 1 (shallow)
+    Drawing::DrawLine(150, 100, 250, 150, red);    // Naïve Algorithm
+    Drawing::DrawLine2(160, 100, 260, 150, green); // Improved Algorithm
+
+    // Slope > 1 (steep)
+    Drawing::DrawLine(100, 50, 150, 250, blue);    // Naïve Algorithm
+    Drawing::DrawLine2(110, 50, 160, 250, yellow); // Improved Algorithm
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

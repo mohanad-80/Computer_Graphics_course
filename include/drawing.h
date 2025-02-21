@@ -54,6 +54,20 @@ namespace Drawing
    * @param color rgb values of the color to use
    */
   void DrawLine(int x1, int y1, int x2, int y2, COLORREF color);
+
+  /**
+   * @brief Improved naive algorithm for drawing a line.
+   *
+   * @details This implementation fixes the issue where the line
+   * appears doted when the slope is bigger than one.
+   *
+   * @param x1    x coordinate of the first point
+   * @param y1    y coordinate of the first point
+   * @param x2    x coordinate of the second point
+   * @param y2    y coordinate of the second point
+   * @param color rgb values of the color to use
+   */
+  void DrawLine2(int x1, int y1, int x2, int y2, COLORREF color);
 } // namespace Drawing
 
 #endif
