@@ -2,6 +2,9 @@
 
 #include "../include/drawing.h"
 
+const int WINDOW_WIDTH = 640;
+const int WINDOW_HEIGHT = 480;
+
 int main(void)
 {
   GLFWwindow *window;
@@ -14,7 +17,7 @@ int main(void)
   }
 
   /* Create a windowed mode window and its OpenGL context */
-  window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+  window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World", NULL, NULL);
   if (!window)
   {
     std::cout << "Failed to create GLFW window" << '\n';
@@ -36,7 +39,7 @@ int main(void)
   // 🟢 Set up an orthographic projection to use (x, y) as pixel coordinates
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, 640, 0, 480, -1, 1); // Match the window size (640x480)
+  glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, -1, 1); // Match the window size
   glMatrixMode(GL_MODELVIEW);
 
   /* Loop until the user closes the window */
