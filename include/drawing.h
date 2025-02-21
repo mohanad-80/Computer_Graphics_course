@@ -4,10 +4,40 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-// SetPixel function declaration
-void SetPixel(int x, int y, float r, float g, float b);
+/**
+ * @brief Namespace for all drawing functions
+ */
+namespace Drawing
+{
+  /**
+   * @brief Represents the rgb values of a color
+   *
+   */
+  struct COLORREF
+  {
+    float r, g, b;
+    COLORREF(float red, float green, float blue) : r(red), g(green), b(blue) {}
+  };
 
-// Line Drawing Algorithms
-void DrawLine(int x1, int y1, int x2, int y2, float r, float g, float b);
+  /**
+   * @brief Draw a pixel
+   *
+   * @param x     x coordinate of the first pixel
+   * @param y     y coordinate of the first pixel
+   * @param color rgb values of the color to use
+   */
+  void SetPixel(int x, int y, COLORREF color);
+
+  /**
+   * @brief Naive algorithm for drawing a line.
+   *
+   * @param x1    x coordinate of the first point
+   * @param y1    y coordinate of the first point
+   * @param x2    x coordinate of the second point
+   * @param y2    y coordinate of the second point
+   * @param color rgb values of the color to use
+   */
+  void DrawLine(int x1, int y1, int x2, int y2, COLORREF color);
+} // namespace Drawing
 
 #endif

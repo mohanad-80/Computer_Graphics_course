@@ -1,10 +1,14 @@
 #include "drawing.h"
 
-// Function to draw a single pixel
-void SetPixel(int x, int y, float r, float g, float b) {
-    glColor3f(r, g, b);
+namespace Drawing
+{
+  // Function to draw a single pixel
+  void SetPixel(int x, int y, COLORREF color)
+  {
+    glColor3f(color.r, color.g, color.b);
     glBegin(GL_POINTS);
     glVertex2i(x, y);
     glEnd();
-    glFlush(); 
-}
+    glFlush();
+  }
+} // namespace Drawing

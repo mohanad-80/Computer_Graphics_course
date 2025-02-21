@@ -47,11 +47,11 @@ int main(void)
 
     for (size_t i = 100; i <= 200; i++)
     {
-      SetPixel(i, i, 1.0f, 0.0f, 0.0f); // Red pixel
+      Drawing::SetPixel(i, i, {1.0f, 0.0f, 0.0f});
     }
 
-    SetPixel(200, 150, 0.0f, 1.0f, 0.0f); // Green pixel at (200,150)
-    SetPixel(300, 200, 0.0f, 0.0f, 1.0f); // Blue pixel at (300,200)
+    Drawing::SetPixel(200, 150, {0.0f, 1.0f, 0.0f});
+    Drawing::SetPixel(300, 200, {1.0f, 1.0f, 1.0f});
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
