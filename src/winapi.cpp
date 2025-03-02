@@ -7,6 +7,9 @@
  * using DDA algorithm.
  * This file is separate from the other implementations of other
  * algorithms which uses OpenGL
+ * 
+ * Make sure to run the code using this command:
+ * g++ winapi.cpp -o winapi -mwindows
  */
 
 #include <Windows.h>
