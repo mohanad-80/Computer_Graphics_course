@@ -77,7 +77,7 @@ int APIENTRY WinMain(HINSTANCE hi, HINSTANCE pi, LPSTR cmd, int nsh)
     WNDCLASSW wc; // Use WNDCLASSW
     wc.cbClsExtra = 0;
     wc.cbWndExtra = 0;
-    wc.hbrBackground = (HBRUSH)GetStockObject(LTGRAY_BRUSH);
+    wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
     wc.lpszClassName = L"MyClass";
