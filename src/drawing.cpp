@@ -134,4 +134,68 @@ namespace Drawing
       }
     }
   }
+
+  void Bresenham(int x1, int y1, int x2, int y2, COLORREF color)
+  {
+    bool steep = abs(y2 - y1) > abs(x2 - x1);
+
+    // If the line is steep, swap x and y coordinates.
+    // now x represent y and vice versa meaning that the
+    // slope is inverted.
+    if (steep)
+    {
+      std::swap(x1, y1);
+      std::swap(x2, y2);
+    }
+
+    // Ensure left-to-right drawing
+    if (x1 > x2)
+    {
+      std::swap(x1, x2);
+      std::swap(y1, y2);
+    }
+
+    int dx = x2 - x1;
+    int dy = abs(y2 - y1);
+    int yStep = (y1 < y2) ? 1 : -1; // Determine the y-direction
+
+    int d = 2 * dy - dx;
+    int d1 = 2 * dy;
+    int d2 = 2 * (dy - dx);
+
+    int x = x1;
+    int y = y1;
+
+    while (x <= x2)
+    {
+      if (steep)
+        SetPixel(y, x, color); // Swap back if steep
+      else
+        SetPixel(x, y, color);
+
+      if (d > 0)
+      {
+        y += yStep;
+        d += d2;
+      }
+      else
+      {
+        d += d1;
+      }
+
+      x++;
+    }
+  }
+
+  void TestLineDrawingFunction(std::function<void(int, int, int, int, COLORREF)> function)
+  {
+    function(200, 200, 350, 100, {0.0f, 1.0f, 0.0f}); // Case 1: Right & Up, Shallow (dx > 0, dy < 0, |m| < 1)
+    function(200, 200, 220, 50, {0.0f, 1.0f, 0.0f});  // Case 2: Right & Up, Steep (dx > 0, dy < 0, |m| > 1)
+    function(200, 200, 350, 300, {0.0f, 1.0f, 0.0f}); // Case 3: Right & Down, Shallow (dx > 0, dy > 0, |m| < 1)
+    function(200, 200, 220, 400, {0.0f, 1.0f, 0.0f}); // Case 4: Right & Down, Steep (dx > 0, dy > 0, |m| > 1)
+    function(200, 200, 50, 300, {0.0f, 1.0f, 0.0f});  // Case 5: Left & Down, Shallow (dx < 0, dy > 0, |m| < 1)
+    function(200, 200, 180, 400, {0.0f, 1.0f, 0.0f}); // Case 6: Left & Down, Steep (dx < 0, dy > 1, |m| > 1)
+    function(200, 200, 50, 100, {0.0f, 1.0f, 0.0f});  // Case 7: Left & Up, Shallow (dx < 0, dy < 0, |m| < 1)
+    function(200, 200, 180, 50, {0.0f, 1.0f, 0.0f});  // Case 8: Left & Up, Steep (dx < 0, dy < 0, |m| > 1)
+  }
 } // namespace Drawing

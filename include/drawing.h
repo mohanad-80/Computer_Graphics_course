@@ -3,6 +3,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <functional>
 
 /**
  * @brief Namespace for all drawing functions
@@ -83,6 +84,39 @@ namespace Drawing
    * @param color rgb values of the color to use
    */
   void SimpleDDA(int x1, int y1, int x2, int y2, COLORREF color);
+
+  /**
+   * @brief Draw a line using Bresenham (midpoint) algorithm.
+   *
+   * @details This implementation gets rid of any floating point
+   * operations and only works with integers which improves the
+   * algorithm's performance greatly.
+   *
+   * @param x1    x coordinate of the first point
+   * @param y1    y coordinate of the first point
+   * @param x2    x coordinate of the second point
+   * @param y2    y coordinate of the second point
+   * @param color rgb values of the color to use
+   */
+  void Bresenham(int x1, int y1, int x2, int y2, COLORREF color);
+
+  /**
+   * @brief Tests one of the functions for drawing a line by drawing
+   * all possible cases.
+   *
+   * @details Cases tested:
+   * Case 1: Right & Up, Shallow (dx > 0, dy < 0, |m| < 1)
+   * Case 2: Right & Up, Steep (dx > 0, dy < 0, |m| > 1)
+   * Case 3: Right & Down, Shallow (dx > 0, dy > 0, |m| < 1)
+   * Case 4: Right & Down, Steep (dx > 0, dy > 0, |m| > 1)
+   * Case 5: Left & Down, Shallow (dx < 0, dy > 0, |m| < 1)
+   * Case 6: Left & Down, Steep (dx < 0, dy > 1, |m| > 1)
+   * Case 7: Left & Up, Shallow (dx < 0, dy < 0, |m| < 1)
+   * Case 8: Left & Up, Steep (dx < 0, dy < 0, |m| > 1)
+   *
+   * @param function The functions to be tested.
+   */
+  void TestLineDrawingFunction(std::function<void(int, int, int, int, COLORREF)> function);
 } // namespace Drawing
 
 #endif

@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["glfw", "MODELVIEW"],
+  "cSpell.words": ["Bresenham", "glfw", "MODELVIEW"],
   "files.associations": {
     "array": "cpp",
     "atomic": "cpp",
