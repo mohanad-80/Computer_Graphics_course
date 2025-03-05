@@ -68,6 +68,7 @@ int main(void)
     Drawing::CircleCartesian(100, 100, 50, green);
     Drawing::CirclePolar(250, 250, 50, red);
     Drawing::CircleIterativePolar(400, 100, 50, blue);
+    Drawing::CircleBresenham(550, 250, 50, yellow);
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

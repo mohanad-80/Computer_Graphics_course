@@ -248,4 +248,30 @@ namespace Drawing
       x = temp;
     }
   }
+
+  void CircleBresenham(int xc, int yc, int r, COLORREF color)
+  {
+    int x = 0, y = r;
+    int d = 1 - r; // approximation
+    int d1 = 3, d2 = 5 - 2 * r;
+    draw8Points(xc, yc, x, y, color);
+    while (x < y)
+    {
+      if (d >= 0)
+      {
+        d += d2;
+        d2 += 4;
+        y--;
+      }
+      else
+      {
+        d += d1;
+        d2 += 2;
+      }
+      d1 += 2;
+      x++;
+
+      draw8Points(xc, yc, x, y, color);
+    }
+  }
 } // namespace Drawing

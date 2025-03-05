@@ -168,6 +168,19 @@ namespace Drawing
    * @param color rgb values of the color to use
    */
   void CircleIterativePolar(int xc, int yc, int r, COLORREF color);
+
+  /**
+   * @brief Draw a circle using a Bresenham's (midpoint) algorithm.
+   * 
+   * @details This algorithm uses only integer operation which 
+   * is faster than the other algorithms.
+   *
+   * @param xc    x coordinate of the circle's center
+   * @param yc    y coordinate of the circle's center
+   * @param r     the radius of the circle
+   * @param color rgb values of the color to use
+   */
+  void CircleBresenham(int xc, int yc, int r, COLORREF color);
 } // namespace Drawing
 
 #endif
