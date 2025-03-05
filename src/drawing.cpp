@@ -135,7 +135,7 @@ namespace Drawing
     }
   }
 
-  void Bresenham(int x1, int y1, int x2, int y2, COLORREF color)
+  void BresenhamLine(int x1, int y1, int x2, int y2, COLORREF color)
   {
     bool steep = abs(y2 - y1) > abs(x2 - x1);
 
@@ -197,5 +197,55 @@ namespace Drawing
     function(200, 200, 180, 400, {0.0f, 1.0f, 0.0f}); // Case 6: Left & Down, Steep (dx < 0, dy > 1, |m| > 1)
     function(200, 200, 50, 100, {0.0f, 1.0f, 0.0f});  // Case 7: Left & Up, Shallow (dx < 0, dy < 0, |m| < 1)
     function(200, 200, 180, 50, {0.0f, 1.0f, 0.0f});  // Case 8: Left & Up, Steep (dx < 0, dy < 0, |m| > 1)
+  }
+
+  void draw8Points(int xc, int yc, int x, int y, COLORREF color)
+  {
+    SetPixel(xc + x, yc + y, color);
+    SetPixel(xc - x, yc + y, color);
+    SetPixel(xc + x, yc - y, color);
+    SetPixel(xc - x, yc - y, color);
+    SetPixel(xc + y, yc + x, color);
+    SetPixel(xc - y, yc + x, color);
+    SetPixel(xc + y, yc - x, color);
+    SetPixel(xc - y, yc - x, color);
+  }
+
+  void DrawCircle(int xc, int yc, int r, COLORREF color)
+  {
+    int x = 0, y = r;
+    while (x <= y)
+    {
+      draw8Points(xc, yc, x, y, color);
+      x++;
+      y = round(sqrt(r * r - x * x));
+    }
+  }
+
+  void DrawCircle2(int xc, int yc, int r, COLORREF color)
+  {
+    int x = r, y = 0;
+    double theta = 0, thetaStep = 1.0 / r;
+    while (y <= x)
+    {
+      draw8Points(xc, yc, x, y, color);
+      theta += thetaStep;
+      x = round(r * cos(theta));
+      y = round(r * sin(theta));
+    }
+  }
+
+  void DrawCircle3(int xc, int yc, int r, COLORREF color)
+  {
+    double x = r, y = 0;
+    double thetaStep = 1.0 / r;
+    double cosTheta = cos(thetaStep), sinTheta = sin(thetaStep);
+    while (y <= x)
+    {
+      draw8Points(xc, yc, x, y, color);
+      double temp = x * cosTheta - y * sinTheta;
+      y = x * sinTheta + y * cosTheta;
+      x = temp;
+    }
   }
 } // namespace Drawing

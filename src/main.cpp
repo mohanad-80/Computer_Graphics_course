@@ -63,7 +63,11 @@ int main(void)
     // Drawing::TestLineDrawingFunction(Drawing::DrawLine);  // Naïve Algorithm
     // Drawing::TestLineDrawingFunction(Drawing::DrawLine2); // Improved Algorithm
     // Drawing::TestLineDrawingFunction(Drawing::SimpleDDA); // SimpleDDA Algorithm
-    Drawing::TestLineDrawingFunction(Drawing::Bresenham); // Bresenham Algorithm
+    // Drawing::TestLineDrawingFunction(Drawing::BresenhamLine); // Bresenham Algorithm
+
+    Drawing::DrawCircle(100, 100, 50, green);
+    Drawing::DrawCircle2(250, 250, 50, red);
+    Drawing::DrawCircle3(400, 100, 50, blue);
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

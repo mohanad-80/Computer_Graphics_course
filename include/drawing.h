@@ -98,7 +98,7 @@ namespace Drawing
    * @param y2    y coordinate of the second point
    * @param color rgb values of the color to use
    */
-  void Bresenham(int x1, int y1, int x2, int y2, COLORREF color);
+  void BresenhamLine(int x1, int y1, int x2, int y2, COLORREF color);
 
   /**
    * @brief Tests one of the functions for drawing a line by drawing
@@ -117,6 +117,54 @@ namespace Drawing
    * @param function The functions to be tested.
    */
   void TestLineDrawingFunction(std::function<void(int, int, int, int, COLORREF)> function);
+
+  // ===================================
+  // Circle functions ==================
+  // ===================================
+
+  /**
+   * @brief Utility function used by circle functions that draws
+   * eight points.
+   *
+   * @details It makes use of the circle similarity property.
+   *
+   * @param xc    x coordinate of the circle's center
+   * @param yc    y coordinate of the circle's center
+   * @param x     the x distance from the circle's center
+   * @param y     the y distance from the circle's center
+   * @param color rgb values of the color to use
+   */
+  void draw8Points(int xc, int yc, int x, int y, COLORREF color);
+
+  /**
+   * @brief Draw a circle using a naive cartesian algorithm.
+   *
+   * @param xc    x coordinate of the circle's center
+   * @param yc    y coordinate of the circle's center
+   * @param r     the radius of the circle
+   * @param color rgb values of the color to use
+   */
+  void DrawCircle(int xc, int yc, int r, COLORREF color);
+
+  /**
+   * @brief Draw a circle using a naive polar algorithm.
+   *
+   * @param xc    x coordinate of the circle's center
+   * @param yc    y coordinate of the circle's center
+   * @param r     the radius of the circle
+   * @param color rgb values of the color to use
+   */
+  void DrawCircle2(int xc, int yc, int r, COLORREF color);
+
+  /**
+   * @brief Draw a circle using a iterative polar algorithm.
+   *
+   * @param xc    x coordinate of the circle's center
+   * @param yc    y coordinate of the circle's center
+   * @param r     the radius of the circle
+   * @param color rgb values of the color to use
+   */
+  void DrawCircle3(int xc, int yc, int r, COLORREF color);
 } // namespace Drawing
 
 #endif
