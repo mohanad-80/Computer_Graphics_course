@@ -158,6 +158,9 @@ namespace Drawing
 
   /**
    * @brief Draw a circle using a iterative polar algorithm.
+   * 
+   * @details This algorithm only calculate the cos and sin only
+   * once which makes it faster than the normal polar algorithm
    *
    * @param xc    x coordinate of the circle's center
    * @param yc    y coordinate of the circle's center
