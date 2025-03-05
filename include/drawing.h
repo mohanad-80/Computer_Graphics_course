@@ -54,7 +54,7 @@ namespace Drawing
    * @param y2    y coordinate of the second point
    * @param color rgb values of the color to use
    */
-  void DrawLine(int x1, int y1, int x2, int y2, COLORREF color);
+  void LineNaive(int x1, int y1, int x2, int y2, COLORREF color);
 
   /**
    * @brief Improved naive algorithm for drawing a line.
@@ -68,7 +68,7 @@ namespace Drawing
    * @param y2    y coordinate of the second point
    * @param color rgb values of the color to use
    */
-  void DrawLine2(int x1, int y1, int x2, int y2, COLORREF color);
+  void LineImprovedNaive(int x1, int y1, int x2, int y2, COLORREF color);
 
   /**
    * @brief Draw a line using simple digital differential
@@ -83,7 +83,7 @@ namespace Drawing
    * @param y2    y coordinate of the second point
    * @param color rgb values of the color to use
    */
-  void SimpleDDA(int x1, int y1, int x2, int y2, COLORREF color);
+  void LineSimpleDDA(int x1, int y1, int x2, int y2, COLORREF color);
 
   /**
    * @brief Draw a line using Bresenham (midpoint) algorithm.
@@ -98,7 +98,7 @@ namespace Drawing
    * @param y2    y coordinate of the second point
    * @param color rgb values of the color to use
    */
-  void BresenhamLine(int x1, int y1, int x2, int y2, COLORREF color);
+  void LineBresenham(int x1, int y1, int x2, int y2, COLORREF color);
 
   /**
    * @brief Tests one of the functions for drawing a line by drawing
@@ -144,7 +144,7 @@ namespace Drawing
    * @param r     the radius of the circle
    * @param color rgb values of the color to use
    */
-  void DrawCircle(int xc, int yc, int r, COLORREF color);
+  void CircleCartesian(int xc, int yc, int r, COLORREF color);
 
   /**
    * @brief Draw a circle using a naive polar algorithm.
@@ -154,7 +154,7 @@ namespace Drawing
    * @param r     the radius of the circle
    * @param color rgb values of the color to use
    */
-  void DrawCircle2(int xc, int yc, int r, COLORREF color);
+  void CirclePolar(int xc, int yc, int r, COLORREF color);
 
   /**
    * @brief Draw a circle using a iterative polar algorithm.
@@ -164,7 +164,7 @@ namespace Drawing
    * @param r     the radius of the circle
    * @param color rgb values of the color to use
    */
-  void DrawCircle3(int xc, int yc, int r, COLORREF color);
+  void CircleIterativePolar(int xc, int yc, int r, COLORREF color);
 } // namespace Drawing
 
 #endif

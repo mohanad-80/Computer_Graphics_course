@@ -26,7 +26,7 @@ namespace Drawing
     glFlush();
   }
 
-  void DrawLine(int x1, int y1, int x2, int y2, COLORREF color)
+  void LineNaive(int x1, int y1, int x2, int y2, COLORREF color)
   {
     int dx = x2 - x1;
     int dy = y2 - y1;
@@ -45,7 +45,7 @@ namespace Drawing
     }
   }
 
-  void DrawLine2(int x1, int y1, int x2, int y2, COLORREF color)
+  void LineImprovedNaive(int x1, int y1, int x2, int y2, COLORREF color)
   {
     int dx = x2 - x1;
     int dy = y2 - y1;
@@ -87,7 +87,7 @@ namespace Drawing
     }
   }
 
-  void SimpleDDA(int x1, int y1, int x2, int y2, COLORREF color)
+  void LineSimpleDDA(int x1, int y1, int x2, int y2, COLORREF color)
   {
     int dx = x2 - x1;
     int dy = y2 - y1;
@@ -135,7 +135,7 @@ namespace Drawing
     }
   }
 
-  void BresenhamLine(int x1, int y1, int x2, int y2, COLORREF color)
+  void LineBresenham(int x1, int y1, int x2, int y2, COLORREF color)
   {
     bool steep = abs(y2 - y1) > abs(x2 - x1);
 
@@ -211,7 +211,7 @@ namespace Drawing
     SetPixel(xc - y, yc - x, color);
   }
 
-  void DrawCircle(int xc, int yc, int r, COLORREF color)
+  void CircleCartesian(int xc, int yc, int r, COLORREF color)
   {
     int x = 0, y = r;
     while (x <= y)
@@ -222,7 +222,7 @@ namespace Drawing
     }
   }
 
-  void DrawCircle2(int xc, int yc, int r, COLORREF color)
+  void CirclePolar(int xc, int yc, int r, COLORREF color)
   {
     int x = r, y = 0;
     double theta = 0, thetaStep = 1.0 / r;
@@ -235,7 +235,7 @@ namespace Drawing
     }
   }
 
-  void DrawCircle3(int xc, int yc, int r, COLORREF color)
+  void CircleIterativePolar(int xc, int yc, int r, COLORREF color)
   {
     double x = r, y = 0;
     double thetaStep = 1.0 / r;

@@ -60,14 +60,14 @@ int main(void)
     //   Drawing::SetPixel(i, i, {1.0f, 0.0f, 0.0f});
     // }
 
-    // Drawing::TestLineDrawingFunction(Drawing::DrawLine);  // Naïve Algorithm
-    // Drawing::TestLineDrawingFunction(Drawing::DrawLine2); // Improved Algorithm
-    // Drawing::TestLineDrawingFunction(Drawing::SimpleDDA); // SimpleDDA Algorithm
-    // Drawing::TestLineDrawingFunction(Drawing::BresenhamLine); // Bresenham Algorithm
+    // Drawing::TestLineDrawingFunction(Drawing::LineNaive);  // Naïve Algorithm
+    // Drawing::TestLineDrawingFunction(Drawing::LineImprovedNaive); // Improved Algorithm
+    // Drawing::TestLineDrawingFunction(Drawing::LineSimpleDDA); // LineSimpleDDA Algorithm
+    // Drawing::TestLineDrawingFunction(Drawing::LineBresenham); // Bresenham Algorithm
 
-    Drawing::DrawCircle(100, 100, 50, green);
-    Drawing::DrawCircle2(250, 250, 50, red);
-    Drawing::DrawCircle3(400, 100, 50, blue);
+    Drawing::CircleCartesian(100, 100, 50, green);
+    Drawing::CirclePolar(250, 250, 50, red);
+    Drawing::CircleIterativePolar(400, 100, 50, blue);
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
