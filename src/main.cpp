@@ -65,10 +65,14 @@ int main(void)
     // Drawing::TestLineDrawingFunction(Drawing::LineSimpleDDA); // LineSimpleDDA Algorithm
     // Drawing::TestLineDrawingFunction(Drawing::LineBresenham); // Bresenham Algorithm
 
-    Drawing::CircleCartesian(100, 100, 50, green);
-    Drawing::CirclePolar(250, 250, 50, red);
-    Drawing::CircleIterativePolar(400, 100, 50, blue);
-    Drawing::CircleBresenham(550, 250, 50, yellow);
+    // Drawing::CircleCartesian(100, 100, 50, green);
+    // Drawing::CirclePolar(250, 250, 50, red);
+    // Drawing::CircleIterativePolar(400, 100, 50, blue);
+    // Drawing::CircleBresenham(550, 250, 50, yellow);
+
+    // Drawing::TestLineDrawingFunction(Drawing::LineInterpolation);
+
+    Drawing::LineGradientInterpolation(200, 200, 350, 100, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f});
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

@@ -181,6 +181,32 @@ namespace Drawing
    * @param color rgb values of the color to use
    */
   void CircleBresenham(int xc, int yc, int r, COLORREF color);
+
+  // ===================================
+  // Curves functions ==================
+  // ===================================
+
+  /**
+   * @brief Draw a line using Interpolation algorithm.
+   * 
+   * @param x1    x coordinate of the first point
+   * @param y1    y coordinate of the first point
+   * @param x2    x coordinate of the second point
+   * @param y2    y coordinate of the second point
+   * @param color rgb values of the color to use
+   */
+  void LineInterpolation(int x1, int y1, int x2, int y2, COLORREF color);
+
+  /**
+   * @brief Draw a line with color gradient using Interpolation algorithm.
+   * 
+   * @param x1    x coordinate of the first point
+   * @param y1    y coordinate of the first point
+   * @param x2    x coordinate of the second point
+   * @param y2    y coordinate of the second point
+   * @param color rgb values of the color to use
+   */
+  void LineGradientInterpolation(int x1, int y1, int x2, int y2, COLORREF color1, COLORREF color2);
 } // namespace Drawing
 
 #endif

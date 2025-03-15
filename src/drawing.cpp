@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cmath>
 
 #include "drawing.h"
@@ -272,6 +273,38 @@ namespace Drawing
       x++;
 
       draw8Points(xc, yc, x, y, color);
+    }
+  }
+
+  void LineInterpolation(int x1, int y1, int x2, int y2, COLORREF color)
+  {
+    int alpha1 = x2 - x1, alpha2 = y2 - y1;
+    double tStep = 1.0 / std::max(std::abs(alpha1), std::abs(alpha2));
+
+    for (double t = 0; t <= 1; t += tStep)
+    {
+      double x = alpha1 * t + x1;
+      double y = alpha2 * t + y1;
+      SetPixel(round(x), round(y), color);
+    }
+  }
+
+  void LineGradientInterpolation(int x1, int y1, int x2, int y2, COLORREF color1, COLORREF color2)
+  {
+    int alpha1 = x2 - x1, alpha2 = y2 - y1;
+    float alpha3 = color2.r - color1.r;
+    float alpha4 = color2.g - color1.g;
+    float alpha5 = color2.b - color1.b;
+    double tStep = 1.0 / std::max(std::abs(alpha1), std::abs(alpha2));
+
+    for (double t = 0; t <= 1; t += tStep)
+    {
+      double x = alpha1 * t + x1;
+      double y = alpha2 * t + y1;
+      float r = alpha3 * t + color1.r;
+      float g = alpha4 * t + color1.g;
+      float b = alpha5 * t + color1.b;
+      SetPixel(round(x), round(y), {r, g, b});
     }
   }
 } // namespace Drawing
