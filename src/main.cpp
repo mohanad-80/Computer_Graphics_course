@@ -72,7 +72,13 @@ int main(void)
 
     // Drawing::TestLineDrawingFunction(Drawing::LineInterpolation);
 
-    Drawing::LineGradientInterpolation(200, 200, 350, 100, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f});
+    // Drawing::LineGradientInterpolation(200, 200, 350, 100, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f});
+
+    Drawing::CurveInterpolation(100, 100, 250, 50, 400, 100, 50, {1.0f, 0.0f, 0.0f});
+    Drawing::CurveInterpolation(100, 150, 250, 75, 400, 150, 75, {1.0f, 1.0f, 0.0f});
+    Drawing::CurveInterpolation(100, 200, 250, 100, 400, 200, 100, {0.0f, 1.0f, 0.0f});
+    Drawing::CurveInterpolation(100, 250, 250, 150, 400, 250, 125, {0.5f, 0.5f, 0.5f});
+    Drawing::CurveInterpolation(100, 300, 250, 200, 400, 300, 150, {0.0f, 0.0f, 1.0f});
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

@@ -158,7 +158,7 @@ namespace Drawing
 
   /**
    * @brief Draw a circle using a iterative polar algorithm.
-   * 
+   *
    * @details This algorithm only calculate the cos and sin only
    * once which makes it faster than the normal polar algorithm
    *
@@ -171,8 +171,8 @@ namespace Drawing
 
   /**
    * @brief Draw a circle using a Bresenham's (midpoint) algorithm.
-   * 
-   * @details This algorithm uses only integer operation which 
+   *
+   * @details This algorithm uses only integer operation which
    * is faster than the other algorithms.
    *
    * @param xc    x coordinate of the circle's center
@@ -188,7 +188,7 @@ namespace Drawing
 
   /**
    * @brief Draw a line using Interpolation algorithm.
-   * 
+   *
    * @param x1    x coordinate of the first point
    * @param y1    y coordinate of the first point
    * @param x2    x coordinate of the second point
@@ -199,7 +199,7 @@ namespace Drawing
 
   /**
    * @brief Draw a line with color gradient using Interpolation algorithm.
-   * 
+   *
    * @param x1    x coordinate of the first point
    * @param y1    y coordinate of the first point
    * @param x2    x coordinate of the second point
@@ -207,6 +207,20 @@ namespace Drawing
    * @param color rgb values of the color to use
    */
   void LineGradientInterpolation(int x1, int y1, int x2, int y2, COLORREF color1, COLORREF color2);
+
+  /**
+   * @brief draw a curve using Interpolation algorithm.
+   *
+   * @param x1       x coordinate of the first point
+   * @param y1       y coordinate of the first point
+   * @param x2       x coordinate of the second point
+   * @param y2       y coordinate of the second point
+   * @param x3       x coordinate of the third point
+   * @param y3       y coordinate of the third point
+   * @param numOfPts number of points to draw on the curve
+   * @param color    rgb values of the color to use
+   */
+  void CurveInterpolation(int x1, int y1, int x2, int y2, int x3, int y3, int numOfPts, COLORREF color);
 } // namespace Drawing
 
 #endif

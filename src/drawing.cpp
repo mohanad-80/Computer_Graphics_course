@@ -307,4 +307,22 @@ namespace Drawing
       SetPixel(round(x), round(y), {r, g, b});
     }
   }
+
+  void CurveInterpolation(int x1, int y1, int x2, int y2, int x3, int y3, int numOfPts, COLORREF color)
+  {
+    int alpha1 = 2 * x1 - 4 * x2 + 2 * x3;
+    int alpha2 = 2 * y1 - 4 * y2 + 2 * y3;
+    int beta1 = -3 * x1 + 4 * x2 - x3;
+    int beta2 = -3 * y1 + 4 * y2 - y3;
+    int gama1 = x1;
+    int gama2 = y1;
+    double tStep = 1.0 / numOfPts;
+
+    for (double t = 0; t <= 1; t += tStep)
+    {
+      double x = alpha1 * t * t + beta1 * t + gama1;
+      double y = alpha2 * t * t + beta2 * t + gama2;
+      SetPixel(round(x), round(y), color);
+    }
+  }
 } // namespace Drawing
