@@ -18,6 +18,57 @@ namespace Drawing
     return (int)(n + 0.5);
   }
 
+  Matrix4x2 multiply(const Matrix4x4 &a, const Matrix4x2 &b)
+  {
+    Matrix4x2 result{};
+
+    for (int i = 0; i < 4; ++i)
+    {
+      for (int j = 0; j < 2; ++j)
+      {
+        result[i][j] = 0.0;
+        for (int k = 0; k < 4; ++k)
+        {
+          result[i][j] += a[i][k] * b[k][j];
+        }
+      }
+    }
+
+    return result;
+  }
+
+  Vector4 multiply(const Matrix4x4 &mat, const Vector4 &vec)
+  {
+    Vector4 result{};
+
+    for (int j = 0; j < 4; ++j)
+    {
+      result[j] = 0.0;
+      for (int i = 0; i < 4; ++i)
+      {
+        result[j] += vec[i] * mat[i][j];
+      }
+    }
+
+    return result;
+  }
+
+  Vector2 multiply(const Matrix4x2 &mat, const Vector4 &vec)
+  {
+    Vector2 result{};
+
+    for (int j = 0; j < 2; ++j)
+    {
+      result[j] = 0.0;
+      for (int i = 0; i < 4; ++i)
+      {
+        result[j] += vec[i] * mat[i][j];
+      }
+    }
+
+    return result;
+  }
+
   void SetPixel(int x, int y, COLORREF color)
   {
     glColor3f(color.r, color.g, color.b);
@@ -322,6 +373,31 @@ namespace Drawing
     {
       double x = alpha1 * t * t + beta1 * t + gama1;
       double y = alpha2 * t * t + beta2 * t + gama2;
+      SetPixel(round(x), round(y), color);
+    }
+  }
+
+  void CurveHermite(int x1, int y1, int u1, int v1, int x2, int y2, int u2, int v2, int numOfPts, COLORREF color)
+  {
+    Matrix4x4 hermiteMatrix = {{{2, -2, 1, 1},
+                                {-3, 3, -2, -1},
+                                {0, 0, 1, 0},
+                                {1, 0, 0, 0}}};
+
+    Matrix4x2 geometryMatrix = {{{x1, y1},
+                                 {u1, v1},
+                                 {x2, y2},
+                                 {u2, v2}}};
+
+    Matrix4x2 c = multiply(hermiteMatrix, geometryMatrix);
+
+    double tStep = 1.0 / numOfPts;
+
+    for (double t = 0; t <= 1; t += tStep)
+    {
+      // x = alpha * t^3 + beta * t^2 + gama * t + delta
+      double x = c[0][0] * t * t * t + c[1][0] * t * t + c[2][0] * t + c[3][0];
+      double y = c[0][1] * t * t * t + c[1][1] * t * t + c[2][1] * t + c[3][1];
       SetPixel(round(x), round(y), color);
     }
   }

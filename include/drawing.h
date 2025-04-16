@@ -4,6 +4,12 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <functional>
+#include <array>
+
+using Matrix4x4 = std::array<std::array<double, 4>, 4>;
+using Matrix4x2 = std::array<std::array<double, 2>, 4>;
+using Vector4 = std::array<double, 4>;
+using Vector2 = std::array<double, 2>;
 
 /**
  * @brief Namespace for all drawing functions
@@ -25,6 +31,10 @@ namespace Drawing
    * @return rounded number
    */
   int round(double n);
+
+  Matrix4x2 multiply(const Matrix4x4 &a, const Matrix4x2 &b);
+  Vector4 multiply(const Matrix4x4 &mat, const Vector4 &vec);
+  Vector2 multiply(const Matrix4x2 &mat, const Vector4 &vec);
 
   /**
    * @brief Represents the rgb values of a color
@@ -221,6 +231,8 @@ namespace Drawing
    * @param color    rgb values of the color to use
    */
   void CurveInterpolation(int x1, int y1, int x2, int y2, int x3, int y3, int numOfPts, COLORREF color);
+
+  void CurveHermite(int x1, int y1, int u1, int v1, int x2, int y2, int u2, int v2, int numOfPts, COLORREF color);
 } // namespace Drawing
 
 #endif
