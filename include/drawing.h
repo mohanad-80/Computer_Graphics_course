@@ -231,8 +231,10 @@ namespace Drawing
    * @param color    rgb values of the color to use
    */
   void CurveInterpolation(int x1, int y1, int x2, int y2, int x3, int y3, int numOfPts, COLORREF color);
-
+  
   void CurveHermite(int x1, int y1, int u1, int v1, int x2, int y2, int u2, int v2, int numOfPts, COLORREF color);
+
+  void CurveBezier(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int numOfPts, COLORREF color);
 } // namespace Drawing
 
 #endif

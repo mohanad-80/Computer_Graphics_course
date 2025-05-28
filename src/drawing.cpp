@@ -401,4 +401,29 @@ namespace Drawing
       SetPixel(round(x), round(y), color);
     }
   }
+
+  void CurveBezier(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int numOfPts, COLORREF color)
+  {
+    Matrix4x4 bezierMatrix = {{{-1, 3, -3, 1},
+                               {3, -6, 3, 0},
+                               {-3, 3, 0, 0},
+                               {1, 0, 0, 0}}};
+
+    Matrix4x2 geometryMatrix = {{{x1, y1},
+                                 {x2, y2},
+                                 {x3, y3},
+                                 {x4, y4}}};
+
+    Matrix4x2 c = multiply(bezierMatrix, geometryMatrix);
+
+    double tStep = 1.0 / numOfPts;
+
+    for (double t = 0; t <= 1; t += tStep)
+    {
+      // x = alpha * t^3 + beta * t^2 + gama * t + delta
+      double x = c[0][0] * t * t * t + c[1][0] * t * t + c[2][0] * t + c[3][0];
+      double y = c[0][1] * t * t * t + c[1][1] * t * t + c[2][1] * t + c[3][1];
+      SetPixel(round(x), round(y), color);
+    }
+  }
 } // namespace Drawing

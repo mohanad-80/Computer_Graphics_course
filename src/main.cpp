@@ -81,6 +81,7 @@ int main(void)
     // Drawing::CurveInterpolation(100, 300, 250, 200, 400, 300, 150, {0.0f, 0.0f, 1.0f});
 
     Drawing::CurveHermite(100, 300, 100, -200, 400, 300, 100, 200, 1000, red);
+    Drawing::CurveBezier(100, 300, 200, 400, 300, 400, 400, 300, 1000, red);
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
